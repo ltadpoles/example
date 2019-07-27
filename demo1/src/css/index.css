@@ -1,0 +1,14 @@
+#list {
+    list-style: none;
+}
+
+.img1 {
+    background: url('../images/01.jpg');
+    height: 200px;
+    width: 200px;
+}
+.img2 {
+    background: url('../images/02.jpg');
+    height: 200px;
+    width: 200px;
+}
