@@ -2,6 +2,9 @@
     <div>
         <router-view />
         <img src="./images/01.jpg" alt="">
+        <img src="./images/02.jpg" alt="">
+        <img src="./images/03.jpg" alt="">
+        <img src="./images/04.jpg" alt="">
 
         <p class="font-sty">我们是字体图标</p>
         <span class="iconfont icon-chengzi"></span>
