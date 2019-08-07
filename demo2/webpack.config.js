@@ -3,10 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')  // vue-loader 5.x之后必须引入的插件
 
 module.exports = {
-    entry: path.resolve(__dirname, './src/main.js'),
+    entry: {
+        // 项目代码入口
+        app: path.resolve(__dirname, './src/main.js')
+    },
+    
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'bundle.js'
+        // 指定分离出来包的名称
+        filename: 'js/[name].js'
     },
     devServer: {
         port: '8088',
@@ -32,5 +37,16 @@ module.exports = {
             template: path.resolve(__dirname, './index.html')
         }),
         new VueLoaderPlugin()
-    ]
+    ],
+    optimization:{    //优化
+        splitChunks:{
+            cacheGroups:{//缓存组，一个对象。它的作用在于，可以对不同的文件做不同的处理
+                commonjs:{
+                    name:'vender',        //输出的名字（提出来的第三方库）
+                    test: /\.js/,        //通过条件找到要提取的文件
+                    chunks:'initial'    //只对入口文件进行处理
+                }
+            }
+        }
+    }
 }
