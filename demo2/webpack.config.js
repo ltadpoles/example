@@ -23,8 +23,20 @@ module.exports = {
             { test: /\.css$/, use: ['style-loader', 'css-loader'] },
             { test: /\.(sass|scss)$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
             { test: /\.vue$/, use: 'vue-loader'},
-            { test: /\.(jpg|png|gif|jpeg|bmp)$/, use: 'url-loader'},
-            { test: /\.(svg|eot|ttf|woff|woff2)$/, use: 'file-loader' }
+            { test: /\.(jpg|png|gif|jpeg|bmp)$/, use: [{
+                loader: 'url-loader',
+                options: {
+                    // 限制图片大小 10240 表示10kb
+                    limit: 10240,
+                    name: 'images/img-[hash:5].[ext]'
+                }
+            }]},
+            { test: /\.(svg|eot|ttf|woff|woff2)$/, use: [{
+                loader: 'file-loader',
+                options: {
+                    name: 'font/[hash:7].[ext]'
+                }
+            }] }
         ]
     },
     resolve: {
