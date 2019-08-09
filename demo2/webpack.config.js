@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')  // vue-loader 5.x之后必须引入的插件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 分离样式文件
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')  // 压缩样式文件 
 
 module.exports = {
     entry: {
@@ -20,8 +22,8 @@ module.exports = {
     module: {
         rules: [
             { test: /\.js$/, use: ['babel-loader'], exclude: /node-modules/},
-            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-            { test: /\.(sass|scss)$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+            { test: /\.css$/, use: [ MiniCssExtractPlugin.loader, 'css-loader'] },
+            { test: /\.(sass|scss)$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] },
             { test: /\.vue$/, use: 'vue-loader'},
             { test: /\.(jpg|png|gif|jpeg|bmp)$/, use: [{
                 loader: 'url-loader',
@@ -48,7 +50,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './index.html')
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/app.css',
+            chunkFilename: 'css/bundle.css',
+            ignoreOrder: false // 移除警告
+        }),
+        new OptimizeCssAssetsPlugin()
     ],
     optimization:{    //优化
         splitChunks:{
