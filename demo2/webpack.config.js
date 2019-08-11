@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')  // vue-loader 5.x之后必须引入的插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 分离样式文件
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')  // 压缩样式文件 
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -56,7 +57,8 @@ module.exports = {
             chunkFilename: 'css/bundle.css',
             ignoreOrder: false // 移除警告
         }),
-        new OptimizeCssAssetsPlugin()
+        new OptimizeCssAssetsPlugin(),
+        new CleanWebpackPlugin()
     ],
     optimization:{    //优化
         splitChunks:{

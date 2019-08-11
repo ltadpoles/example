@@ -5,9 +5,9 @@ Vue.use(Router)
 
 export default new Router({
     routes: [
-        {path: '/', component: () => import('@/views/index.vue')},
-        {path: '/person', component: () => import('@/views/person.vue')},
-        {path: '/member', component: () => import('@/views/member.vue')},
-        {path: '/cart', component: () => import('@/views/cart.vue')}
+        {path: '/', component: () => import(/* webpackChunkName: 'index' */'@/views/index.vue')},
+        {path: '/person', component: () => import(/* webpackChunkName: 'person' */'@/views/person.vue')},
+        {path: '/member', component: () => import(/* webpackChunkName: 'member' */'@/views/member.vue')},
+        {path: '/cart', component: () => import(/* webpackChunkName: 'cart' */'@/views/cart.vue')}
     ]
 })
