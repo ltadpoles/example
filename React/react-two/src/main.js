@@ -7,7 +7,13 @@ class Dv extends React.Component {
         this.state = {name: 'tadpole', age: 17}
     }
     render() {
-        return (<div>我叫 { this.state.name },今年 { this.state.age } 岁了</div>)
+        return (
+            <div>
+                <div>我叫 { this.state.name },今年 { this.state.age } 岁了</div>
+                <button onClick = { function() { console.log('事件触发了')} }>点我这里</button>
+                <a href='#' onClick={function(e){console.log('事件触发了'); return false}}>Click me</a>
+            </div>
+        )
     }
 }
 
