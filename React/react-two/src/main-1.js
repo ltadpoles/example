@@ -5,18 +5,13 @@ class Dv extends React.Component {
     constructor(prop) {
         super(prop)
         this.state = {name: 'tadpole', age: 17}
-        // this.addAge = this.addAge.bind(this) // 绑定this
-    }
-    addAge() {
-        this.setState({
-            age: this.state.age += 1
-        })
     }
     render() {
         return (
             <div>
                 <div>我叫 { this.state.name },今年 { this.state.age } 岁了</div>
-                <button onClick = { (e) => this.addAge(e) }>Click me</button>
+                <button onClick = { function() { console.log('事件触发了')} }>点我这里</button>
+                <a href='#' onClick={function(e){console.log('事件触发了'); return false}}>Click me</a>
             </div>
         )
     }
