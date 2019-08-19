@@ -12,11 +12,17 @@ class Dv extends React.Component {
             age: this.state.age += 1
         })
     }
+    // addAge = () => {
+    //     this.setState({
+    //         age: this.state.age += 1
+    //     })
+    // }
     render() {
         return (
             <div>
                 <div>我叫 { this.state.name },今年 { this.state.age } 岁了</div>
                 <button onClick = { (e) => this.addAge(e) }>Click me</button>
+                {/* <button onClick = { this.addAge }>Click me</button> */}
             </div>
         )
     }
