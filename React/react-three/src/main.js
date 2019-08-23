@@ -6,18 +6,18 @@ class Dv extends React.Component {
     constructor(props) {
         console.warn('组件生命周期：constructor')
         super(props)
-        this.state = { name: 'tadpole', age: 17 }
+        this.state = { name: 'tadpole', age: 17, list: [] }
     }
 
-    // static getDerivedStateFromProps(props, state) {
-    //     console.warn('组件生命周期：getDerivedStateFromProps')
-    //     if (props.age !== state.age) {
-    //         return {
-    //             age: props.age
-    //         }
-    //     }
-    //     return null
-    // }
+    static getDerivedStateFromProps(props, state) {
+        console.warn('组件生命周期：getDerivedStateFromProps')
+        // if (props.age !== state.age) {
+        //     return {
+        //         age: props.age
+        //     }
+        // }
+        return null
+    }
     // UNSAFE_componentWillMount() {
     //     console.warn('组件生命周期：UNSAFE_componentWillMount')
     // }
@@ -28,7 +28,11 @@ class Dv extends React.Component {
             <div>
                 <div>Hello,我叫 {this.state.name} , 今年 {this.state.age} 岁了</div>
                 <ul>
-                    {this.state.list.some(res => {})}
+                    { 
+                        this.state.list.map(res => {
+                            return <li key={ res.id }>{ res.message }</li>
+                        })
+                    }
                 </ul>
             </div>
         )
@@ -41,11 +45,9 @@ class Dv extends React.Component {
             age: 19
         })
         axios.get('/src/test.json').then(res => {
-            console.log(res)
             this.setState({
                 list: res.data.list
             })
-            console.log(this.state)
         })
     }
     
