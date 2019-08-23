@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import axios from 'axios'
 
 class Dv extends React.Component {
     constructor(props) {
@@ -12,28 +13,39 @@ class Dv extends React.Component {
     //     console.warn('组件生命周期：getDerivedStateFromProps')
     //     if (props.age !== state.age) {
     //         return {
-    //             name: 'tadpole',
     //             age: props.age
     //         }
     //     }
     //     return null
     // }
-    UNSAFE_componentWillMount() {
-        console.warn('组件生命周期：UNSAFE_componentWillMount')
-    }
+    // UNSAFE_componentWillMount() {
+    //     console.warn('组件生命周期：UNSAFE_componentWillMount')
+    // }
 
     render() {
         console.warn('组件生命周期：render')
         return (
-            <div>Hello,我叫{this.state.name},今年{this.state.age}岁了</div>
+            <div>
+                <div>Hello,我叫 {this.state.name} , 今年 {this.state.age} 岁了</div>
+                <ul>
+                    {this.state.list.some(res => {})}
+                </ul>
+            </div>
         )
     }
 
     componentDidMount() {
         console.warn('组件生命周期：componentDidMount')
         this.setState({
-            name: 'ltadpole',
+            name: 'tadpole 1号',
             age: 19
+        })
+        axios.get('/src/test.json').then(res => {
+            console.log(res)
+            this.setState({
+                list: res.data.list
+            })
+            console.log(this.state)
         })
     }
     
