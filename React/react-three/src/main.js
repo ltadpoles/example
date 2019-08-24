@@ -11,11 +11,11 @@ class Dv extends React.Component {
 
     static getDerivedStateFromProps(props, state) {
         console.warn('组件生命周期：getDerivedStateFromProps')
-        // if (props.age !== state.age) {
-        //     return {
-        //         age: props.age
-        //     }
-        // }
+        if (props.age !== state.age) {
+            return {
+                age: props.age
+            }
+        }
         return null
     }
     // UNSAFE_componentWillMount() {
@@ -25,6 +25,15 @@ class Dv extends React.Component {
     render() {
         console.warn('组件生命周期：render')
         return (
+            // [1, 2, 3, 4]
+            // <div>
+            //     {
+            //         this.setState({
+            //             name: '小二'
+            //         })
+            //     }
+            // </div>
+
             <div>
                 <div>Hello,我叫 {this.state.name} , 今年 {this.state.age} 岁了</div>
                 <ul>
@@ -40,10 +49,10 @@ class Dv extends React.Component {
 
     componentDidMount() {
         console.warn('组件生命周期：componentDidMount')
-        this.setState({
-            name: 'tadpole 1号',
-            age: 19
-        })
+        // this.setState({
+        //     name: 'tadpole 1号',
+        //     age: 19
+        // })
         axios.get('/src/test.json').then(res => {
             this.setState({
                 list: res.data.list
