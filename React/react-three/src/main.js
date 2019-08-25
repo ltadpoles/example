@@ -78,6 +78,8 @@ class Dv extends React.Component {
     }
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.warn('组件生命周期：getSnapshotBeforeUpdate')
+
+        // 这个函数必须与 componentDidUpdate()一起使用
         // 更新之前的 props 和 state
         console.log(prevProps)
         console.log(prevState)
