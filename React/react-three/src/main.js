@@ -81,8 +81,8 @@ class Dv extends React.Component {
 
         // 这个函数必须与 componentDidUpdate()一起使用
         // 更新之前的 props 和 state
-        console.log(prevProps)
-        console.log(prevState)
+        // console.log(prevProps)
+        // console.log(prevState)
 
         // 这里必须有返回值
         return null
@@ -90,10 +90,10 @@ class Dv extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.warn('组件生命周期：componentDidUpdate')
-        console.log(prevProps)
-        console.log(prevState)
-        // 上一步传递过来的对象
-        console.log(snapshot)
+        // console.log(prevProps)
+        // console.log(prevState)
+        // // 上一步传递过来的对象
+        // console.log(snapshot)
 
         // 这里可以更新 state ，但是必须包含在判断条件中
        if(snapshot) {
@@ -103,7 +103,17 @@ class Dv extends React.Component {
        }
     }
 
+    // UNSAFE_componentWillUpdate(nextProps, nextState){ 
+    //     console.warn('组件生命周期：UNSAFE_componentWillUpdate()')
+    // }
+
+    // UNSAFE_componentWillReceiveProps(nextProps) {
+        
+    //     console.warn('组件生命周期：UNSAFE_componentWillReceiveProps()')
+    //     console.log(this.props)
+    //     console.log(nextProps)
+    // }
     
 }
 
-ReactDom.render(<Dv age={18}/>, document.getElementById('app'))
+ReactDom.render(<Dv age={18} message={{ data: 'message' }}/>, document.getElementById('app'))
