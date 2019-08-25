@@ -59,6 +59,48 @@ class Dv extends React.Component {
             })
         })
     }
+
+    // 更新阶段
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.warn('组件生命周期：shouldComponentUpdate')
+        // 这里可以拿到更新之前的 props 和 state
+        // console.log(this.props)
+        // console.log(this.state)
+
+        // 这里可以拿到更新之后的 props 和 state
+        // console.log(nextProps)
+        // console.log(nextState)
+
+        // 必须有返回值 true 或者 false 更新渲染或者阻止渲染
+        return true
+        // return false
+    }
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.warn('组件生命周期：getSnapshotBeforeUpdate')
+        // 更新之前的 props 和 state
+        console.log(prevProps)
+        console.log(prevState)
+
+        // 这里必须有返回值
+        return null
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.warn('组件生命周期：componentDidUpdate')
+        console.log(prevProps)
+        console.log(prevState)
+        // 上一步传递过来的对象
+        console.log(snapshot)
+
+        // 这里可以更新 state ，但是必须包含在判断条件中
+       if(snapshot) {
+            this.setState({
+                hobby: 'play game'
+            })
+       }
+    }
+
     
 }
 
