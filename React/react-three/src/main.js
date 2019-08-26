@@ -2,11 +2,48 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import axios from 'axios'
 
+class Son1 extends React.Component {
+    componentDidMount() {
+        console.log('Son1组件挂载')
+    }
+    componentWillUnmount() {
+        console.warn('组件生命周期：componentWillUnmount')
+        console.log('Son1组件卸载')
+    }
+    render() {
+        return (
+            <div>这是Son1组件</div>
+        )
+    }
+}
+
+class Son2 extends React.Component {
+    componentDidMount() {
+        console.log('Son2组件挂载')
+    }
+    componentWillUnmount() {
+        console.warn('组件生命周期：componentWillUnmount')
+        console.log('Son2组件卸载')
+    }
+    render() {
+        return (
+            <div>这是Son2组件</div>
+        )
+    }
+}
+
 class Dv extends React.Component {
     constructor(props) {
         console.warn('组件生命周期：constructor')
         super(props)
-        this.state = { name: 'tadpole', age: 17, list: [] }
+        this.state = { name: 'tadpole', age: 17, list: [], isShow: true}
+        this.onButtonClick = this.onButtonClick.bind(this)
+    }
+
+    onButtonClick() {
+        this.setState({
+            isShow: !this.state.isShow
+        })
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -35,6 +72,10 @@ class Dv extends React.Component {
             // </div>
 
             <div>
+                {
+                    this.state.isShow ? <Son1 /> : <Son2 />
+                }
+                <button onClick={this.onButtonClick}>Click me</button>
                 <div>Hello,我叫 {this.state.name} , 今年 {this.state.age} 岁了</div>
                 <ul>
                     { 
@@ -116,4 +157,4 @@ class Dv extends React.Component {
     
 }
 
-ReactDom.render(<Dv age={18} message={{ data: 'message' }}/>, document.getElementById('app'))
+ReactDom.render(<Dv age={18} />, document.getElementById('app'))
