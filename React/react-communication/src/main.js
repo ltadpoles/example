@@ -4,21 +4,20 @@ import { EventEmitter } from 'events'
 
 const emitter = new EventEmitter()
 
+// 组件A
 class ComponentA extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            msg: ''
-        }
+        this.state = {msg: ''}
     }
     componentDidMount() {
-        // 组件装载后添加自定义事件
+        // 组件挂载完毕的时候注册事件
         this.eventEmitter = emitter.addListener('outputValue', msg => {
             this.setState({msg})
         })
     }
-    componentWillUnmount() {
-        // 组件销毁前移除事件监听
+    componentWillUnMount() {
+        // 组件销毁之前移除事件
         emitter.removeListener(this.eventEmitter)
     }
     render() {
@@ -31,12 +30,13 @@ class ComponentA extends React.Component {
     }
 }
 
+// 组件B
 class ComponentB extends React.Component {
     constructor(props) {
         super(props)
         this.state = {value: ''}
     }
-    valueChange = (data) => {
+    valueChange = data => {
         this.setState({
             value: data.target.value
         })
@@ -49,16 +49,13 @@ class ComponentB extends React.Component {
         return (
             <div>
                 这是组件B
-                <br />
                 <input value={this.state.value} onChange={this.valueChange}></input>
-                <br />
                 <button onClick={this.btnClick}>点击我传递信息</button>
             </div>
             
         )
     }
 }
-
 class App extends React.Component {
     render() {
         return (
