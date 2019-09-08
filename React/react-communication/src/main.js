@@ -1,81 +1,74 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import { EventEmitter } from 'events'
 
-// 评论输入组件
-class CommentData extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { data: '123' }
-    }
+const emitter = new EventEmitter()
 
-    commentChange = (data) => {
-        this.setState({
-            data: data.target.value
-        })
-    }
-
-    submit = () => {
-        this.props.newList(this.state)
-    }
-
-    render() {
-        return (
-            <div>
-                <textarea rows='6' cols='50' value={this.state.data} onChange={this.commentChange}></textarea>
-                <br />
-                <button onClick={this.submit}>发表评论</button>
-            </div>
-        )
-    }
-}
-
-// 评论列表显示组件
-function CommentList(props) {
-    return (
-        <ul>
-            {
-                props.list.map((res, index) => {
-                    return (
-                        <li key={index}>
-                            <p>用户{index + 1}</p>
-                            <p>{res.data}</p>
-                        </li>
-                    )
-                })
-            }
-        </ul>
-    )
-}
-
-// 父组件
-class Comment extends React.Component {
+class ComponentA extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: 'commemt',
-            list: [
-                {data: '这个好棒啊！'},
-                {data: '我也是这么觉得'}
-            ]
+            msg: ''
         }
     }
-    listChange = data => {
-        this.setState((state, props) => {
-            let list = state.list.push(data)
-            return list
+    componentDidMount() {
+        // 组件装载后添加自定义事件
+        this.eventEmitter = emitter.addListener('outputValue', msg => {
+            this.setState({msg})
         })
     }
+    componentWillUnmount() {
+        // 组件销毁前移除事件监听
+        emitter.removeListener(this.eventEmitter)
+    }
     render() {
-        let commentLists = <CommentList  list={this.state.list} />
-        let commentData = <CommentData newList={this.listChange} />
         return (
             <div>
-                <h1>{this.state.title}</h1>
-                <div>{commentData}</div>
-                <div>{commentLists}</div>
+                这是组件A
+                <div>组件B传递过来的数据：{ this.state.msg }</div>
             </div>
         )
     }
 }
 
-ReactDom.render(<Comment />, document.getElementById('app'))
+class ComponentB extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {value: ''}
+    }
+    valueChange = (data) => {
+        this.setState({
+            value: data.target.value
+        })
+    }
+    btnClick = () => {
+        // 触发自定义事件
+        emitter.emit('outputValue', this.state.value)
+    }
+    render() {
+        return (
+            <div>
+                这是组件B
+                <br />
+                <input value={this.state.value} onChange={this.valueChange}></input>
+                <br />
+                <button onClick={this.btnClick}>点击我传递信息</button>
+            </div>
+            
+        )
+    }
+}
+
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <ComponentA />
+                <br />
+                <ComponentB />
+            </div>
+        )
+    }
+}
+
+ReactDom.render(<App />, document.getElementById('app'))
