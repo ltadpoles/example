@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Index from './pages/index'
+import Video from './pages/video'
+import Workplace from './pages/workplace'
 
 class App extends Component {
     constructor(props) {
@@ -15,12 +17,14 @@ class App extends Component {
                         <h3>导航</h3>
                         <ul>
                             <li><Link to='/'>首页</Link></li>
-                            <li><Link to='/'>视频教程</Link></li>
-                            <li><Link to='/'>工作技能</Link></li>
+                            <li><Link to='/video'>视频教程</Link></li>
+                            <li><Link to='/workplace'>工作技能</Link></li>
                         </ul>
                     </div>
                     <div>
-                        <Route path='/' component={Index} />
+                        <Route path='/' exact component={Index} />
+                        <Route path='/video' component={Video} />
+                        <Route path='/workplace' component={Workplace} />
                     </div>
                 </div>
             </Router>

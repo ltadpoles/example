@@ -6,7 +6,7 @@ class Getup extends Component {
         this.state = {  }
     }
     render() { 
-        return ( <div></div> );
+        return ( <div>技能提升页面</div> );
     }
 }
  

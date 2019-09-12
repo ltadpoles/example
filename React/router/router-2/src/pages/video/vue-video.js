@@ -6,7 +6,7 @@ class VueVideo extends Component {
         this.state = {  }
     }
     render() { 
-        return ( <div></div> );
+        return ( <div>Vue视频页面</div> );
     }
 }
  
