@@ -6,7 +6,7 @@ class Money extends Component {
         this.state = {  }
     }
     render() { 
-        return ( <div></div> );
+        return ( <div>发工资了</div> );
     }
 }
  

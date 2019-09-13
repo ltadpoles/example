@@ -6,7 +6,7 @@ class ReactVideo extends Component {
         this.state = {  }
     }
     render() { 
-        return ( <div></div> );
+        return ( <div>React视频页面</div> );
     }
 }
  

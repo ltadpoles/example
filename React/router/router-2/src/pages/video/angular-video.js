@@ -6,7 +6,7 @@ class AngularVideo extends Component {
         this.state = {  }
     }
     render() { 
-        return ( <div></div> );
+        return ( <div>Angular视频页面</div> );
     }
 }
  
