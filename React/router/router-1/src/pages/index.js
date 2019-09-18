@@ -14,13 +14,14 @@ class Index extends Component {
     }
     render() { 
         return ( 
-            <ul>
-                {
-                    this.state.list.map(res => {
-                        return <li key={ res.id }><Link to={ `/list/${res.id}/${ res.title }` }>{ res.title }</Link></li>
-                    })
-                }
-            </ul>
+            <div>Index页面</div>
+            // <ul>
+            //     {
+            //         this.state.list.map(res => {
+            //             return <li key={ res.id }><Link to={ `/list/${res.id}/${ res.title }` }>{ res.title }</Link></li>
+            //         })
+            //     }
+            // </ul>
          );
     }
 }

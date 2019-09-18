@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
-import About from './about'
 
 class List extends Component {
     constructor(props) {
@@ -8,8 +6,8 @@ class List extends Component {
         this.state = { data: 'List页面' }
     }
     render() { 
-        // <Redirect to='/about' component={About}
-        return ( <div>这个是{this.state.data}</div> );
+        return ( <div>list页面</div> );
+        // return ( <div>这个是{this.state.data}</div> );
     }
     componentDidMount() {
         // 组件挂载完成
@@ -20,7 +18,7 @@ class List extends Component {
         //  - history 对象
         console.log(this.props.match)
         this.setState({
-            data: this.props.match.params.title
+            data: this.props.match.params.id
         })
     }
 }
