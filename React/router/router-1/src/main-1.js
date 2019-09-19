@@ -1,21 +1,30 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Index from './pages/index'
-import List from './pages/list'
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 
-function App() {
+const Index = () => (<div>Index页面</div>)
+
+const About = () => (<div>About页面</div>)
+
+const App = () => {
     return (
-        <Router>
-            <ul>
-                <li><Link to='/'>Index</Link></li>
-                <li><Link to='/List'>List</Link></li>
-            </ul>
-            <Route path='/' exact component={Index} />
-            {/* 动态传值 */}
-            <Route path='/list' component={List} />
-        </Router>
+        <BrowserRouter>
+            <div>
+                <div>
+                    <ul>
+                        <li><Link to='/'>Index</Link></li>
+                        <li><Link to='/about'>About</Link></li>
+                    </ul>
+                </div>
+                <div>
+                    <Switch>
+                        <Route path='/' exact component={Index}></Route>
+                        <Route path='/about' exact component={About}></Route>
+                    </Switch>
+                </div>
+            </div>
+        </BrowserRouter>
     )
 }
- 
+
 ReactDom.render(<App />, document.getElementById('app'))
