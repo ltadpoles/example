@@ -1,41 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 import ReactDom from 'react-dom'
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 
-const Index = () => (<div>Index页面</div>)
-
-const About = () => (<div>About页面</div>)
-
-const App = () => {
-    return (
-        <BrowserRouter>
-            <div>
-                <div>
-                    <ul>
-                        <li><Link to='/'>Index</Link></li>
-                        <li><Link to='/about'>About</Link></li>
-                    </ul>
-                </div>
-                <div>
-                        {/* <Route path='/' exact component={Index} />
-                        <Route path='/about' component={About} /> */}
-
-
-                       
-                        {/* <Route path='/about' render={(props) => <div>这个是render渲染的about页面{props}</div>} />
-                        <Route path='/about' children={(props) => <div>这个是children渲染的about页面</div>} /> */}
-
-                         <Route path="/about" children={(props) => {
-                            console.log(props)
-                            return <div>这个是children渲染的about页面</div>
-                        }} component={About} render={(props) => {
-                            console.log(props)
-                            return <div>这个是render渲染的about页面</div>
-                        }} />
-                </div>
-            </div>
-        </BrowserRouter>
-    )
-}
+const App = () =>　(
+    <Router>
+        <ul>
+            <li><Link to='/'>Index</Link></li>
+            <li><Link to={{pathname: '/about',search: 'sort=name', hash: '#users'}}>About</Link></li>
+            <li><NavLink to='/user' activeStyle={{fontWeight: 'bold',color: 'red'}}>user</NavLink></li>
+        </ul>
+        <div>
+            <Route path='/' exact render={()=><div>Index页面</div>} />
+            <Route path='/about' render={(props)=>{
+                console.log(props)
+                return <div>About页面</div>
+            }} />
+            <Route path='/user' render={()=> <div>User页面</div>} />
+        </div>
+    </Router>
+)
 
 ReactDom.render(<App />, document.getElementById('app'))

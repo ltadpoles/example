@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 const Index = () => (<div>Index页面</div>)
 
@@ -17,10 +17,8 @@ const App = () => {
                     </ul>
                 </div>
                 <div>
-                    <Switch>
-                        <Route path='/' exact component={Index}></Route>
-                        <Route path='/about' exact component={About}></Route>
-                    </Switch>
+                    <Route path='/' exact component={Index}></Route>
+                    <Route path='/about' exact component={About}></Route>
                 </div>
             </div>
         </BrowserRouter>
