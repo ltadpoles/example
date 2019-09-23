@@ -12,19 +12,19 @@ class App extends Component {
     render() { 
         return ( 
             <Router>
-                <div>213</div>
                 <div>
                     <div>
                         <h3>导航</h3>
                         <ul>
                             <li><Link to='/'>首页</Link></li>
-                            <li><Link to='/video'>视频教程</Link></li>
+                            <li><Link to='/video/1'>视频教程1</Link></li>
+                            <li><Link to='/video/2'>视频教程2</Link></li>
                             <li><Link to='/workplace'>工作技能</Link></li>
                         </ul>
                     </div>
                     <div>
                         <Route path='/' exact component={Index} />
-                        <Route path='/video' component={Video} />
+                        <Route path='/video/:id' component={Video} />
                         <Route path='/workplace' component={Workplace} />
                     </div>
                 </div>

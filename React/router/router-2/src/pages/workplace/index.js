@@ -9,17 +9,18 @@ class Workplace extends Component {
         this.state = {  }
     }
     render() { 
+        console.log(this.props)
         return ( 
             <div>
                 <div>
                     <h4>工作导航</h4>
                     <ul>
-                        <li><Link to='/workplace/getup'>技能提升</Link></li>
+                        <li><Link to={`${this.props.match.url}/getup`}>技能提升</Link></li>
                         <li><Link to='/workplace/money'>工资发放</Link></li>
                     </ul>
                 </div>
                 <div>
-                    <Route path='/workplace/getup' component={Getup} />
+                    <Route path={`${this.props.match.url}/getup`} component={Getup} />
                     <Route path='/workplace/money' component={Money} />
                 </div>
             </div>
