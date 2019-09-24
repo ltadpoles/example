@@ -22,6 +22,13 @@ class App extends Component {
             type: 'btnClick'
         }
         store.dispatch(action)
+    } 
+    delItem(index) {
+        const action = {
+            type: 'delClick',
+            index
+        }
+        store.dispatch(action)
     }
     render() { 
         return ( 
@@ -34,7 +41,9 @@ class App extends Component {
                     <ul>
                         {
                             this.state.list.map((res, index) => (
-                                <li key={index}>{res}</li>
+                                // 给每个 li 元素添加事件
+                                // 这是直接写 onClick={this.delItem(index)} 会直接执行函数，所以使用 bind 传参
+                                <li key={index} onClick={this.delItem.bind(this, index)}>{res}</li>
                             ))
                         }
                     </ul>

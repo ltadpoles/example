@@ -8,7 +8,6 @@ const defaultState = {
 }
 
 export default (state = defaultState, action) => {
-    console.log(state, action)
     if(action.type === 'changeInput'){
         let newState = JSON.parse(JSON.stringify(state))
         newState.inputValue = action.value
@@ -16,8 +15,18 @@ export default (state = defaultState, action) => {
     }
     if(action.type === 'btnClick') {
         let newState = JSON.parse(JSON.stringify(state))
+        if(!newState.inputValue) {
+            alert('请至少输入一个值')
+            return state
+        }
         newState.list.push(newState.inputValue)
         newState.inputValue = ''
+        return newState
+    }
+    if(action.type === 'delClick') {
+        let newState = JSON.parse(JSON.stringify(state))
+        // 操作数组即可
+        newState.list.splice(action.index, 1)
         return newState
     }
     return state
