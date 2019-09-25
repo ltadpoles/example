@@ -1,12 +1,8 @@
-import { INPUT_CHANGE, BTN_CLICK, DEL_CLICK } from './actionType'
+import { INPUT_CHANGE, BTN_CLICK, DEL_CLICK, GET_LIST } from './actionType'
 
 const defaultState = {
-    inputValue: 'test',
-    list: [
-        '测试数据的第一条',
-        '测试数据的第二条',
-        '测试数据的第三条'
-    ]
+    inputValue: '',
+    list: []
 }
 
 export default (state = defaultState, action) => {
@@ -29,6 +25,12 @@ export default (state = defaultState, action) => {
     if(action.type === DEL_CLICK) {
         let newState = JSON.parse(JSON.stringify(state))
         newState.list.splice(action.index, 1)
+        return newState
+    }
+    if(action.type === GET_LIST) {
+        let newState = JSON.parse(JSON.stringify(state))
+        newState.inputValue = action.data.inputValue
+        newState.list = action.data.list
         return newState
     }
     return state

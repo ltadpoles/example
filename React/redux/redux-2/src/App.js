@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import store from './store'
-import { changeInputAction, addItemAction, delItemAction } from './store/actionCreators'
+import { changeInputAction, addItemAction, delItemAction, getListAction } from './store/actionCreators'
 import AppUi from './appUi'
+import { GET_LIST } from './store/actionType'
 
 class App extends Component {
     constructor(props) {
@@ -20,6 +22,11 @@ class App extends Component {
     }
     delClick(index) {
         store.dispatch(delItemAction(index))
+    }
+    componentDidMount() {
+        axios.get('src/data.json').then(res => {
+            store.dispatch(getListAction(res.data))
+        })
     }
     render() { 
         return ( 
