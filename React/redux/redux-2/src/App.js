@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import store from './store'
 import { changeInputAction, addItemAction, delItemAction } from './store/actionCreators'
+import AppUi from './appUi'
 
 class App extends Component {
     constructor(props) {
@@ -22,21 +23,13 @@ class App extends Component {
     }
     render() { 
         return ( 
-            <div>
-                <div>
-                    <input value={this.state.inputValue} onChange={this.inputChange}></input>
-                    <button style={{'marginLeft': '10px'}} onClick={this.btnClick}>click me</button>
-                </div>
-                <div>
-                    <ul>
-                        {
-                            this.state.list.map((res, index) => (
-                                <li key={index} onClick={this.delClick.bind(this, index)}>{res}</li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            </div>
+            <AppUi
+                inputValue={this.state.inputValue}
+                list={this.state.list}
+                inputChange={this.inputChange}
+                btnClick={this.btnClick}
+                delClick={this.delClick}
+            />
          );
     }
 }
