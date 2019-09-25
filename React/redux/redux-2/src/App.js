@@ -15,7 +15,7 @@ class App extends Component {
     storeChange = () => {
         this.setState(store.getState())
     }
-    btnClick = () => {
+    btnClick = (e) => {
         store.dispatch(addItemAction())
     }
     delClick(index) {
