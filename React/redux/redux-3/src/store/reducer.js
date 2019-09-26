@@ -1,8 +1,8 @@
-import { INPUT_CHANGE, ADD_ITEM, DEL_ITEM } from "./actionType"
+import { INPUT_CHANGE, ADD_ITEM, DEL_ITEM, GET_LIST } from "./actionType"
 
 const defaultStore = {
-    inputValue: 'test',
-    list: ['测试数据一号']
+    inputValue: '',
+    list: []
 }
 
 export default (state = defaultStore, action) => {
@@ -24,6 +24,12 @@ export default (state = defaultStore, action) => {
     if(action.type === DEL_ITEM) {
         let newState = JSON.parse(JSON.stringify(state))
         newState.list.splice(action.index, 1)
+        return newState
+    }
+    if(action.type === GET_LIST) {
+        let newState = JSON.parse(JSON.stringify(state))
+        newState.inputValue = action.data.inputValue
+        newState.list = action.data.list
         return newState
     }
     return state
