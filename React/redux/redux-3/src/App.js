@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import store from './store'
 import AppUi from './AppUi'
-import { inputChangeAction, addItemAction, delItemAction, getListAction } from './store/actionCreators'
+import { inputChangeAction, addItemAction, delItemAction, getListAction, getLists } from './store/actionCreators'
 
 class App extends Component {
     constructor(props) {
@@ -23,9 +23,7 @@ class App extends Component {
         store.dispatch(delItemAction(index))
     }
     componentDidMount() {
-        axios.get('/src/data.json').then(res => {
-            store.dispatch(getListAction(res.data))
-        })
+        store.dispatch(getLists())
     }
     render() { 
         return ( 
