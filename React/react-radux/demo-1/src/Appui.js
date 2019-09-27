@@ -1,17 +1,18 @@
 import React from 'react'
 
 export default props => {
+    const { inputValue, inputChange, addItem, list, delItem} = props
     return (
         <div>
             <div>
-                <input value={props.inputValue} onChange={props.inputChange} />
-                <button onClick={props.addItem}>click</button>
+                <input value={inputValue} onChange={inputChange} />
+                <button onClick={addItem}>click</button>
             </div>
             <div>
                 <ul>
                     {
-                        props.list.map((v,i) => (
-                            <li key={i} onClick={props.delItem.bind(this, i)}>{v}</li>
+                        list.map((v,i) => (
+                            <li key={i} onClick={delItem.bind(this, i)}>{v}</li>
                         ))
                     }
                 </ul>

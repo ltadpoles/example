@@ -8,13 +8,14 @@ class App extends Component {
         this.props.getList()
     }
     render() { 
+        const { inputValue, list, inputChange, addItem, delItem} = this.props
         return ( 
             <Appui 
-                inputValue={this.props.inputValue}
-                list={this.props.list}
-                inputChange={this.props.inputChange}
-                addItem={this.props.addItem}
-                delItem={this.props.delItem}
+                inputValue={inputValue}
+                list={list}
+                inputChange={inputChange}
+                addItem={addItem}
+                delItem={delItem}
             />
          );
     }
