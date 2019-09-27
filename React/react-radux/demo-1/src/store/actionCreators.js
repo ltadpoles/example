@@ -19,7 +19,7 @@ export const getListAction = (data) => ({
     type: GET_LIST,
     data
 })
-
+// 使用中间件就可以在这里发送 ajax 请求获取数据
 export const getListData = () => {
     return dipatch => {
         axios.get('src/data.json').then(res => {

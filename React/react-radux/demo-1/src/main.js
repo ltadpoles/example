@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import App from './App'
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux' //提供器的导入
 import store from './store'
 
 const Apps = (

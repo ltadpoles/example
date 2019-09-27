@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Appui from './Appui'
 import { inputChangeAction, addItemAction, delItemAction, getListData } from './store/actionCreators';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux' // 引入连接器
 
 class App extends Component {
     componentDidMount() {
@@ -20,6 +20,8 @@ class App extends Component {
     }
 }
 
+
+// 增添映射关系
 const stateToProps = state => {
     return {
         inputValue: state.inputValue,
