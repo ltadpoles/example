@@ -1,44 +1,47 @@
 import React, { Component } from 'react'
-import store from './store'
 import Appui from './Appui'
-import { inputChangeAction, addItemAction, delItemAction, getListAction } from './store/actionCreators';
-import Axios from 'axios';
+import { inputChangeAction, addItemAction, delItemAction, getListData } from './store/actionCreators';
+import { connect } from 'react-redux'
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = store.getState()
-        console.log(this.state)
-        store.subscribe(this.storeChange)
-    }
-    inputChange = e => {
-        store.dispatch(inputChangeAction(e.target.value))
-    }
-    addItem = () => {
-        store.dispatch(addItemAction())
-    }
-    delItem = index => {
-        store.dispatch(delItemAction(index))
-    }
-    storeChange = () => {
-        this.setState(store.getState())
-    }
     componentDidMount() {
-        Axios.get('src/data.json').then(res => {
-            store.dispatch(getListAction(res.data))
-        })
+        this.props.getList()
     }
     render() { 
         return ( 
             <Appui 
-                inputValue={this.state.inputValue}
-                list={this.state.list}
-                inputChange={this.inputChange}
-                addItem={this.addItem}
-                delItem={this.delItem}
+                inputValue={this.props.inputValue}
+                list={this.props.list}
+                inputChange={this.props.inputChange}
+                addItem={this.props.addItem}
+                delItem={this.props.delItem}
             />
          );
     }
 }
+
+const stateToProps = state => {
+    return {
+        inputValue: state.inputValue,
+        list: state.list
+    }
+}
+
+const dispatchToProps = dispatch => {
+    return {
+        inputChange(e) {
+            dispatch(inputChangeAction(e.target.value))
+        },
+        addItem() {
+            dispatch(addItemAction())
+        },
+        delItem(index) {
+            dispatch(delItemAction(index))
+        },
+        getList() {
+            dispatch(getListData())
+        }
+    }
+}
  
-export default App;
+export default connect(stateToProps, dispatchToProps)(App);

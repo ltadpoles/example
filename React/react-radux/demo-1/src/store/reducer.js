@@ -9,8 +9,6 @@ const defaultStore = {
 export default (state = defaultStore, action) => {
     if(action.type == INPUT_CHANGE) {
         let newState = JSON.parse(JSON.stringify(state))
-        console.log(newState)
-        console.log(action)
         newState.inputValue = action.value
         return newState
     }

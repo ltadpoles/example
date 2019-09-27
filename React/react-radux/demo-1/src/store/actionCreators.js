@@ -1,4 +1,5 @@
 import { INPUT_CHANGE, ADD_ITEM, DEL_ITEM, GET_LIST } from "./actionType";
+import axios from 'axios'
 
 export const inputChangeAction = value => ({
     type: INPUT_CHANGE,
@@ -14,7 +15,15 @@ export const delItemAction = index => ({
     index
 })
 
-export const getListAction = data => ({
+export const getListAction = (data) => ({
     type: GET_LIST,
     data
 })
+
+export const getListData = () => {
+    return dipatch => {
+        axios.get('src/data.json').then(res => {
+            dipatch(getListAction(res.data))
+        })
+    }
+}
