@@ -5,11 +5,13 @@ function App(props) {
     // 只能在函数最外层调用 Hook。不要在循环、条件判断或者子函数中调用
     // 只能在 React 的函数组件中调用 Hook。不要在其他 JavaScript 函数中调用
     // Hook 是一种复用状态逻辑的方式，它不复用 state 本身,Hook 的每次调用都有一个完全独立的 state
+    // Hook 使用了 JavaScript 的闭包机制
 
     // 自定义 Hook
     // 如果函数的名字以 “use” 开头并调用其他 Hook，我们就说这是一个自定义 Hook
 
-    // useState 是一个函数，返回值是一个数组
+    // useState 是一个函数，返回值是一个数组(当前 state 以及更新 state 的函数), 唯一的参数就是初始 state
+    // useState 是一种新方法，它与 class 里面的 this.state 提供的功能完全相同
 
     // React Hooks不能出现在条件判断语句中，因为它必须有完全一样的渲染顺序
     // 可以多次声明
@@ -28,9 +30,12 @@ function App(props) {
     // 可以使用 useEffect 的第二个参数，数组中可以写入很多状态对应的变量，当状态值发生变化时，我们才进行解绑。但是当传空数组[]时，就是当组件将被销毁时才进行解绑
 
     useEffect(() => {
+        // 在函数组件中，我们没有 this，所以我们不能分配或读取 this.state
         console.log(this) // undefined
         console.log(props)
-        console.log('count的值变化了')
+        document.title = `You clicked ${count} times`
+
+        // 这里返回一个函数，会在执行清除操作的时候调用。实际上每次 state 变化都会触发清除操作
         return () => {
             console.log('解绑了')
         }
