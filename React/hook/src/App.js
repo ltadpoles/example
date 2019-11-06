@@ -13,6 +13,7 @@ function App(props) {
 
     // useState 是一个函数，返回值是一个数组(当前 state 以及更新 state 的函数), 唯一的参数就是初始 state
     // useState 是一种新方法，它与 class 里面的 this.state 提供的功能完全相同
+    // useState 可以接收一个函数，这个函数只会在首次渲染的时候触发
 
     // React Hooks不能出现在条件判断语句中，因为它必须有完全一样的渲染顺序
 
@@ -43,6 +44,7 @@ function App(props) {
     })
 
     // 第二个参数可用于性能优化 ，接收一个数组，只要数组中的值发生了变化，那么就会执行这个 useEffect 反之则不执行，但不影响首次渲染执行
+    // 数组中需要包含所有外部作用域中会发生变化且在 effect 中使用的变量
     // 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数
     let [fruit, setFruit] = useState('banana')
     useEffect(() => {
