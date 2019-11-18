@@ -1,8 +1,10 @@
-// 返回一个 state，以及更新 state 的函数
+// useState 是一个函数，返回值是一个数组(当前 state 以及更新 state 的函数), 唯一的参数就是初始 state
+// useState 是一种新方法，它与 class 里面的 this.state 提供的功能完全相同
 // 初始渲染期间，返回的状态 (state) 与传入的第一个参数值相同
 // setState 函数用于更新 state。它接收一个新的 state 值并将组件的一次重新渲染加入队列
 // initialState 只会在初识渲染中起作用，后续会被忽略，如果传入一个函数就只会在初始渲染时被调用
 // 更新 state 变量总是替换它而不是合并它，this.setstate()会自动合并
+// 可以多次声明
 
 // const [state, setstate] = useState(initialState)
 
@@ -34,7 +36,7 @@ const UseState = () => {
 
     return (
         <>
-            <div>count: {count}</div>
+            <div>这个是 UseState 中的 count: {count}</div>
             <button onClick={() => setCount(count + 1)}>click</button>
         </>
     )

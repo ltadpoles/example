@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
 import UseState from './pages/useState/index'
-// import UseCallback from './pages/useCallback'
+import UseEffect from './pages/useEffect/index'
 
 export default () => (
-    <> 
+    <>
         <UseState />
+        <UseEffect />
     </>
 )
