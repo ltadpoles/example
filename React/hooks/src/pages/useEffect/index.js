@@ -22,8 +22,7 @@ const UseEffect = () => {
     // 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数
     useEffect(() => {
         // effect 内部的 props 和 state 就会一直拥有其初始值
-        setCount(1)
-        // count++ // 这里还是会影响全局的 count，但是 React 会等待浏览器完成画面渲染之后才会延迟调用 useEffect，所以首次渲染的还是0
+        count++ // 这里还是会影响全局的 count，但是 React 会等待浏览器完成画面渲染之后才会延迟调用 useEffect，所以首次渲染的还是0
         console.log(`这个只是在初始渲染和卸载的时候触发====${count}`) // 这里已经是计算之后的结果了
     }, [])
     return (

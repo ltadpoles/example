@@ -4,7 +4,7 @@ import UseEffect from './pages/useEffect/index'
 
 export default () => (
     <>
-        <UseState />
+        {/* <UseState /> */}
         <UseEffect />
     </>
 )
