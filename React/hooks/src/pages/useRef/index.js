@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react'
 // useRef 返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数
 // 返回的 ref 对象在组件的整个生命周期内保持不变
 // useRef 会在每次渲染时返回同一个 ref 对象
+// 避免在渲染期间设置 refs —— 这可能会导致意外的行为。应该在事件处理器和 effects 中修改 refs
 
 function UseRef() {
     const count = useRef(1)

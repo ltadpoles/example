@@ -4,7 +4,7 @@
 // 与 componentDidMount 或 componentDidUpdate 不同，使用 useEffect 调度的 effect 不会阻塞浏览器更新屏幕,也就是说它是异步的
 // 可以使用多个 effect 用来分离不同的逻辑（比如按照不同的用途）
 
-//
+// 如果只想在更新的时候运行 effect ，那么可以使用一个可变的 ref 手动存储一个 boolean 值来判断
 
 import React, { useState, useEffect } from 'react'
 
