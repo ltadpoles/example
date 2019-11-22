@@ -1,5 +1,6 @@
 // 接收一个形如 (state, action) => newState 的 reducer，并返回当前的 state 以及与其配套的 dispatch 方法
 // 如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行（React 使用 Object.is 比较算法 来比较 state）
+// useReducer 的 dispatch 的身份永远是稳定的
 
 import React, { useReducer } from 'react'
 
