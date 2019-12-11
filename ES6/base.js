@@ -132,7 +132,7 @@
 //         this.lives--
 //     }
 // }
-// cat.jump() 
+// cat.jump()
 
 // // 报错 箭头函数没有 this
 // // 由于对象不能构成单独的作用域，多以箭头函数中的 this 是指向全局的
@@ -160,3 +160,25 @@
 
 // isNaN('abc')  // true
 // Number.isNaN('abc') // false
+
+// let arr = [1, 5, 8, 'ac', 1, 'ab', NaN, 5, 'ac', NaN]
+
+// // 传统方式
+// let newArr = []
+// for(let item of arr) {
+//     if(!newArr.includes(item)) {
+//         newArr.push(item)
+//     }
+// }
+
+// console.log(newArr)
+
+const map = new Map([
+    ['a', 'one'],
+    ['b', 'two'],
+    ['c', 'three']
+])
+
+let obj = Object.fromEntries(map)
+
+console.log(obj)
