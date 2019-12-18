@@ -81,7 +81,7 @@
 // let promise = Promise.resolve(2).then(
 //     (res) => {console.log(res)},
 //     () => {}
-// )   
+// )
 
 // console.log(promise)
 
@@ -100,14 +100,79 @@
 //     console.log(err)
 // })
 
-const p1 = new Promise(function (resolve, reject) {
-    setTimeout(reject, 3000, new Error('fail'))
-  })
-  
-  const p2 = new Promise(function (resolve, reject) {
-    setTimeout(resolve, 1000, p1)
-  })
-  
-  p2
-    .then(result => console.log(result))
-    .catch(error => console.log(error))
+// const p1 = new Promise(function (resolve, reject) {
+//     setTimeout(reject, 3000, new Error('fail'))
+//   })
+
+//   const p2 = new Promise(function (resolve, reject) {
+//     setTimeout(resolve, 1000, p1)
+//   })
+
+//   p2
+//     .then(result => console.log(result))
+//     .catch(error => console.log(error))
+
+// let promise = new Promise((resolve, reject) => {
+//     resolve(1)
+// })
+
+// console.log(promise instanceof Promise)
+
+// let o = { then: function() {}}
+// let v = Object.create(o)
+// v.name = 'tadpole'
+// v.age = 18
+
+// console.log(v.hasOwnProperty('then'))
+
+// let promise = new Promise((resolve, reject) => {
+//     resolve(1)
+// })
+// let promise1 = new Promise((resolve, reject) => {
+//     resolve(2)
+// })
+
+// promise.then(res => {
+//     promise.then(res => {
+//         console.log('A')
+//     })
+//     console.log('B')
+// })
+// promise1.then(res => {
+//     promise.then(res => {
+//         console.log('D')
+//         promise1.then(res => {
+//             console.log('E')
+//         })
+//     })
+//     console.log('C')
+// })
+
+// let obj = {
+//     then() {
+//         console.log(1)
+//     }
+// }
+
+// let promise = new Promise((resolve, reject) => {
+//     resolve(1)
+// })
+
+// console.log(promise === Promise.resolve(promise))
+
+// console.log(obj === Promise.resolve(obj))
+
+let promise = new Promise((resolve, reject) => {
+    resolve(1)
+})
+
+promise.then(res => {
+    foo()
+}).then(res => {
+    // return 2
+    fo()
+}).then(res => {
+    console.log(3)
+}).catch(err => {
+    console.log(err)
+})
