@@ -84,3 +84,30 @@
 // )   
 
 // console.log(promise)
+
+// let promise = new Promise((resolve, reject) => {
+//     console.log(1)
+//     setTimeout(() => {
+//         resolve(2)
+//         console.log(3)
+//     }, 2000);
+//     reject('error')
+// })
+
+// promise.then(res => {
+//     console.log(5)
+// }).catch(err => {
+//     console.log(err)
+// })
+
+const p1 = new Promise(function (resolve, reject) {
+    setTimeout(reject, 3000, new Error('fail'))
+  })
+  
+  const p2 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 1000, p1)
+  })
+  
+  p2
+    .then(result => console.log(result))
+    .catch(error => console.log(error))
