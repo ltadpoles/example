@@ -162,17 +162,28 @@
 
 // console.log(obj === Promise.resolve(obj))
 
-let promise = new Promise((resolve, reject) => {
+// let promise = new Promise((resolve, reject) => {
+//     resolve(1)
+// })
+
+// promise.then(res => {
+//     foo()
+// }).then(res => {
+//     // return 2
+//     fo()
+// }).then(res => {
+//     console.log(3)
+// }).catch(err => {
+//     console.log(err)
+// })
+
+let p = new Promise((resolve, reject) => {
     resolve(1)
 })
-
-promise.then(res => {
-    foo()
-}).then(res => {
-    // return 2
-    fo()
-}).then(res => {
-    console.log(3)
-}).catch(err => {
+p.then(res => {
+    bar.foo()
+}, err => {
     console.log(err)
+}).catch(res => {
+    console.log(res)
 })
