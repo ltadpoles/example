@@ -187,3 +187,14 @@
 // }).catch(res => {
 //     console.log(res)
 // })
+
+// let p1 = new Promise((resolve, reject) => {
+//     resolve(2)
+// })
+
+// Promise.all([]).then(res => {
+//     console.log(res)
+// })
+// Promise.race([]).then(res => {
+//     console.log(res)
+// })
