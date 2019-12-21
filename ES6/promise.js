@@ -177,13 +177,13 @@
 //     console.log(err)
 // })
 
-// let p = new Promise((resolve, reject) => {
-//     resolve(1)
-// })
-// p.then(res => {
-//     bar.foo()
-// }, err => {
-//     console.log(err)
-// }).catch(res => {
-//     console.log(res)
-// })
+let p = new Promise((resolve, reject) => {
+    resolve(1)
+})
+p.then(res => {
+    bar.foo()
+}, err => {
+    console.log(err)
+}).catch(res => {
+    console.log(res)
+})
