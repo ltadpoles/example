@@ -22,13 +22,41 @@
 //     console.log(res)
 // })
 
-async function getName() {
-    return Promise.resolve(2)
+// async function getName() {
+//     return Promise.resolve(2)
+// }
+
+// async function say() {
+//     let name = await getName()
+//     console.log(name)
+// }
+
+// say()
+
+async function async1() {
+    console.log("async1 start");
+    await async2();
+    console.log("async1 end");
+    return 'async return';
 }
 
-async function say() {
-    let name = await getName()
-    console.log(name)
+async function async2() {
+    console.log("async2");
 }
 
-say()
+console.log("script start");
+
+setTimeout(function() {
+    console.log("setTimeout");
+}, 0);
+
+async1().then(function (message) { console.log(message) });
+
+new Promise(function(resolve) {
+    console.log("promise1");
+    resolve();
+}).then(function() {
+    console.log("promise2");
+});
+
+console.log("script end")
