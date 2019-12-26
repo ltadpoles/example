@@ -19,34 +19,85 @@ function yellow() {
 //             green()
 //             setTimeout(() => {
 //                 yellow()
-//             }, 1000);
-//         }, 2000);
-//     }, 3000);
+//                 loop()
+//             }, 1000)
+//         }, 2000)
+//     }, 3000)
 // }
 
 // loop()
+// ---------------------------------------------------------------------------
+// function fn(timer, cb) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             cb()
+//             resolve()
+//         }, timer);
+//     })
+// }
 
-function fn(timer, callback) {
+// let promise = Promise.resolve()
+
+// function loop() {
+//     promise.then(res => {
+//         return fn(3000, red)
+//     }).then(res => {
+//         return fn(2000, green)
+//     }).then(res => {
+//         return fn(1000, yellow)
+//     }).then(res => {
+//         loop()
+//     })
+// }
+
+// loop()
+// -------------------------------------------------------------------------------------
+function fn(timer, cb) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            callback()
+            cb()
             resolve()
-        }, timer);
+        }, timer)
     })
 }
 
-let promise = new Promise((resolve, reject) => { resolve() })
-
-function loop() {
-    promise.then(res => {
-        fn(3000, red)
-    }).then(res => {
-        fn(2000, green)
-    }).then(res => {
-        fn(1000, yellow)
-    }).then(res => {
-        loop()
-    })
+function* gen() {
+    yield fn(3000, red)
+    yield fn(2000, green)
+    yield fn(1000, yellow)
 }
 
-loop()
+function loop(iterator, gen) {
+    // 执行 Generator 函数
+    let result = iterator.next()
+
+    if (result.done) {
+        // 这里需要重新开始执行
+        loop(gen(), gen)
+    } else {
+        result.value.then(res => {
+            loop(iterator, gen)
+        })
+    }
+}
+
+loop(gen(), gen)
+
+// function fn(timer, cb) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             cb()
+//             resolve()
+//         }, timer)
+//     })
+// }
+
+// async function loop() {
+//     while (true) {
+//         await fn(3000, red)
+//         await fn(2000, green)
+//         await fn(1000, yellow)
+//     }
+// }
+
+// loop()
