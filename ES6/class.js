@@ -42,17 +42,54 @@
 // // 直接通过类来调用
 // Person.hello() // Hello World
 
-class Person {
-    name = '游荡de蝌蚪'
-    static say() {
-        console.log(this.name)
-    }
-}
+// class Person {
+//     name = '游荡de蝌蚪'
+//     static say() {
+//         console.log(this.name)
+//     }
+// }
 
-class Bar extends Person{
-    constructor() {
-        super(this)
-    }
-}
+// class Bar extends Person{
+//     constructor() {
+//         super(this)
+//     }
+// }
 
-Bar.say()
+// Bar.say()
+
+// class Bar {
+//     name = 'tadpole'
+//     static say1() {
+//         console.log(3)
+//     }
+//     say() {
+//         console.log(1)
+//     }
+
+//     _init() {
+//         console.log(2)
+//     }
+// }
+
+// // Bar._init()
+// console.log(Bar.name)
+// Bar.say1()
+// let baz = new Bar()
+
+// baz._init()
+// console.log(baz.name)
+
+
+// new target 可以判断是不是通过 new 创建的实例
+// function Person() {
+//     if (new.target === void 0) {
+//         console.log(1)
+//     } else {
+//         console.log(2)
+//     }
+// }
+
+// let person1 = Person()
+// let person2 = new Person()
+
+// console.log(person1)
