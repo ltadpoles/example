@@ -93,3 +93,29 @@
 // let person2 = new Person()
 
 // console.log(person1)
+
+// class 中的new.target指向的就是类本身
+// class Rectangle {
+//     constructor(length, width) {
+//         console.log(new.target === Rectangle)
+//         this.length = length
+//         this.width = width
+//     }
+// }
+
+// var obj = new Rectangle(3, 4)
+
+class Rectangle {
+    constructor(length) {
+        console.log(new.target === Rectangle)
+    }
+}
+
+// 子类继承 new.target 指向的就是子类
+class Square extends Rectangle {
+    constructor(length) {
+        super(length)
+    }
+}
+
+var obj = new Square(3)
