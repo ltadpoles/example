@@ -44,15 +44,22 @@
 
 class Person {
     name = '游荡de蝌蚪'
-    static say() {
+    #private = 10
+    say() {
         console.log(this.name)
+        console.log(this.#private)
+        return this.#private
     }
 }
 
-class Bar extends Person{
-    constructor() {
-        super(this)
-    }
-}
+// class Bar extends Person{
+//     constructor() {
+//         super(this)
+//     }
+// }
 
-Bar.say()
+// Person.say()
+
+let person1 = new Person()
+
+person1.say()
