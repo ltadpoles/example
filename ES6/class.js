@@ -42,15 +42,12 @@
 // // 直接通过类来调用
 // Person.hello() // Hello World
 
-class Person {
-    name = '游荡de蝌蚪'
-    #private = 10
-    say() {
-        console.log(this.name)
-        console.log(this.#private)
-        return this.#private
-    }
-}
+// class Person {
+//     name = '游荡de蝌蚪'
+//     static say() {
+//         console.log(this.name)
+//     }
+// }
 
 // class Bar extends Person{
 //     constructor() {
@@ -58,8 +55,67 @@ class Person {
 //     }
 // }
 
-// Person.say()
+// Bar.say()
 
-let person1 = new Person()
+// class Bar {
+//     name = 'tadpole'
+//     static say1() {
+//         console.log(3)
+//     }
+//     say() {
+//         console.log(1)
+//     }
 
-person1.say()
+//     _init() {
+//         console.log(2)
+//     }
+// }
+
+// // Bar._init()
+// console.log(Bar.name)
+// Bar.say1()
+// let baz = new Bar()
+
+// baz._init()
+// console.log(baz.name)
+
+
+// new target 可以判断是不是通过 new 创建的实例
+// function Person() {
+//     if (new.target === void 0) {
+//         console.log(1)
+//     } else {
+//         console.log(2)
+//     }
+// }
+
+// let person1 = Person()
+// let person2 = new Person()
+
+// console.log(person1)
+
+// class 中的new.target指向的就是类本身
+// class Rectangle {
+//     constructor(length, width) {
+//         console.log(new.target === Rectangle)
+//         this.length = length
+//         this.width = width
+//     }
+// }
+
+// var obj = new Rectangle(3, 4)
+
+class Rectangle {
+    constructor(length) {
+        console.log(new.target === Rectangle)
+    }
+}
+
+// 子类继承 new.target 指向的就是子类
+class Square extends Rectangle {
+    constructor(length) {
+        super(length)
+    }
+}
+
+var obj = new Square(3)
