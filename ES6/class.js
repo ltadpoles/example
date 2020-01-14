@@ -107,7 +107,7 @@
 
 class Rectangle {
     constructor(length) {
-        console.log(new.target === Rectangle)
+        console.log(new.target)
     }
 }
 
@@ -119,3 +119,16 @@ class Square extends Rectangle {
 }
 
 var obj = new Square(3)
+
+let Person = class {
+    constructor(name) {
+        this.name = name
+    }
+    say() {
+        console.log(this.name)
+    }
+}
+
+let p = new Person('游荡de蝌蚪')
+
+p.say()
