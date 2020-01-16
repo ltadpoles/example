@@ -26,11 +26,11 @@ class Person {
         this.name = '游荡de蝌蚪'
     }
     say() {
-        console.log('My name is' + this.name)
+        console.log(this)
     }
-    // static say() {
-    //     console.log('My name in tadpole')
-    // }
+    static say() {
+        console.log(this)
+    }
 }
 
 // class Tadpole extends Person {
@@ -52,7 +52,7 @@ class Tadpole extends Person {
     }
 }
 
-// Person.say()
+Person.say()
 
 Tadpole.say()
 
