@@ -148,4 +148,4 @@ console.log(Object.getOwnPropertyDescriptor(Person, 'prototype'))
 console.log(Object.getOwnPropertyDescriptor(Person1, 'prototype'))
 // { value: Person1 {}, writable: false, enumerable: false, configurable: false }
 
-// 因为 writable 为 false，所以不能重写 class 的 prototype 属性；不可写
+// 因为 writable 为 false，所以不能重写 class 的 prototype 属性
