@@ -179,6 +179,6 @@ const map = new Map([
     ['c', 'three']
 ])
 
-// let obj = Object.fromEntries(map)
+let obj = Object.fromEntries(map)
 
-// console.log(obj)
+console.log(obj)
