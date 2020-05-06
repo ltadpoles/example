@@ -15,6 +15,6 @@ let proxy = new Proxy(book, {
     }
 })
 
-console.log(proxy.name)
+// console.log(proxy.name)
 proxy.price = 60
 console.log(proxy.price)
