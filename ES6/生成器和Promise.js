@@ -5,7 +5,7 @@ function foo() {
 function* main() {
     try {
         let text = yield foo()
-        // console.log(text)
+        console.log(text)
     } catch(err) {
         console.log(err)
     }
