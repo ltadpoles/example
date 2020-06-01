@@ -4,7 +4,7 @@
 
 // 单例模式的核心是 确保只有一个实例，并提供全局访问
 
-// 1.标准的单例模式
+// 1.标准的单例模式(不透明)
 var Singleton = function (name) {
     this.name = name
 }
@@ -46,8 +46,37 @@ var b = new Singleton('tadpole1')
 
 a === b // true
 
+// -----------------------------------------------------------------------------------------------------------------------
+// 3.闭包自执行函数
+var Singleton = (function () {
+    var SingleClass = function () { }; 
+    var instance; 
+    return function () {
+        if (instance) { // 如果已存在 则返回instance
+            return instance;
+        }
+        instance = new SingleClass() // 如果不存在 则new一个
+        return instance;
+    }
+})()
+
+// 4. 代理实现单例模式
+function Single(name) {
+    this.name = name
+}
+
+var ProxySingle = (function() {
+    var instance;
+    return function(name) {
+        if(!instance) {
+            instance = new Single(name)
+        }
+        return instance
+    }
+})()
+
 // ----------------------------------------------------------------------------------------------------------------------------
-// 通用惰性单例模式
+// 5. 通用惰性单例模式
 
 var singleto = function (fn) {
     var result // 多次调用执行就将赋值给这个变量
@@ -55,3 +84,5 @@ var singleto = function (fn) {
         return result || (result = fn.apply(null, arguments))
     }
 }
+
+// ES6的实现模式
