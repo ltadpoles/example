@@ -28,10 +28,23 @@ var b = Singleton.getInstance('tadpole1')
 
 a === b // true
 
+class Singleton {
+    constructor(name) {
+        this.name = name
+        this.instance = null
+    }
+    // 提供一个接口对类进行实例化
+    static getInstance(name) {
+        if (!this.instance) {
+            this.instance = new Singleton(name)
+        }
+        return this.instance
+    }
+}
+
 //-----------------------------------------------------------------------------------------------------------------------
 // 2.构造函数
 function Singleton(name) {
-    var instance
     // 判断实例如果存在 那么就直接返回
     if (typeof Singleton.instance === 'object') {
         return Singleton.instance
@@ -46,11 +59,20 @@ var b = new Singleton('tadpole1')
 
 a === b // true
 
+class Singleton {
+    constructor(name) {
+        this.name = name
+        if (!Singleton.instance) {
+            Singleton.instance = this
+        }
+        return Singleton.instance
+    }
+}
 // -----------------------------------------------------------------------------------------------------------------------
 // 3.闭包自执行函数
 var Singleton = (function () {
-    var SingleClass = function () { }; 
-    var instance; 
+    var SingleClass = function () { };
+    var instance;
     return function () {
         if (instance) { // 如果已存在 则返回instance
             return instance;
@@ -65,10 +87,10 @@ function Single(name) {
     this.name = name
 }
 
-var ProxySingle = (function() {
+var ProxySingle = (function () {
     var instance;
-    return function(name) {
-        if(!instance) {
+    return function (name) {
+        if (!instance) {
             instance = new Single(name)
         }
         return instance
