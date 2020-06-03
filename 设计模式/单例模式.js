@@ -100,11 +100,25 @@ var ProxySingle = (function () {
 // ----------------------------------------------------------------------------------------------------------------------------
 // 5. 通用惰性单例模式
 
-var singleto = function (fn) {
+var Singleton = function (fn) {
     var result // 多次调用执行就将赋值给这个变量
     return function () {
         return result || (result = fn.apply(null, arguments))
     }
 }
 
-// ES6的实现模式
+var createDiv = function () {
+    var div = document.createElement('div')
+    div.style.width = '100vw'
+    div.style.height = '100vh'
+    div.style.backgroundColor = 'red'
+    document.body.appendChild(div)
+    return div
+}
+
+var createSingleLayer = Singleton(createDiv)
+
+document.getElementById('btn').onclick = function () {
+    var divLayer = createSingleLayer()
+    divLayer.style.display = 'block'
+}
