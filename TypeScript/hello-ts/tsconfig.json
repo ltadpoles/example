@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "jsx": "preserve",
+        "strict": true,
+        "noImplicitThis": true,
+        "baseUrl": "./",
+        "experimentalDecorators": true
+    },
+    // "include": [],
+    // "exclude": []
+}
