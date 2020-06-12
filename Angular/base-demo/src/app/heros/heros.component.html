@@ -1,0 +1,9 @@
+<h3>Hero List</h3>
+
+<ul>
+    <li *ngFor="let hero of heros" (click)='selectHero(hero)'>
+        <span>{{ hero.name }}</span>
+    </li>
+</ul>
+
+<app-heros-info [hero]='select'></app-heros-info>
