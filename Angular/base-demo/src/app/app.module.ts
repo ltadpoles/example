@@ -7,18 +7,22 @@ import { AppComponent } from './app.component'
 import { HerosComponent } from './heros/heros.component'
 import { HerosInfoComponent } from './heros-info/heros-info.component'
 import { from } from 'rxjs';
-import { MessagesComponent } from './messages/messages.component'
+import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HerosComponent,
     HerosInfoComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
