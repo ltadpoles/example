@@ -6,6 +6,7 @@ import { Component } from '@angular/core'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  color = 'yellow';
-  title = 'base-demo';
+  condition: boolean = false
+  color: string;
+  title = 'base-demo'
 }

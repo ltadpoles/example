@@ -8,6 +8,9 @@ import { Hero } from '../hero'
   styleUrls: ['./heros.component.scss'],
 })
 export class HerosComponent implements OnInit {
+
+  color: string
+  
   heros: Hero[]
 
   select: Hero

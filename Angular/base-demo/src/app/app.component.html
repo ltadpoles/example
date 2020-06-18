@@ -1,10 +1,24 @@
 <h1>{{ title }}</h1>
 
 <nav>
-    <a routerLink="/heros">Heros</a>
+  <a routerLink="/heros">Heros</a>
 </nav>
-<p appHighlight highlightColor="yellow">Highlighted in yellow</p>
-<p appHighlight [highlightColor]="'orange'">Highlighted in orange</p>
+
+<input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
+<input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
+<input type="radio" name="colors" (click)="color = 'cyan'" />Cyan
+<p [appHighlight]="color">Highlighted in orange</p>
+<p [appHighlight]="color" defaultColor="red">Highlighted in orange</p>
+
+<button (click)='condition = !condition'>Toggle Condition</button>
+<p *appUnless="condition" class="unless a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+<p *appUnless="!condition" class="unless b">
+  (B) Although the condition is true, this paragraph is displayed because
+  appUnless is set to false.
+</p>
+
 <router-outlet></router-outlet>
 
 <app-messages></app-messages>

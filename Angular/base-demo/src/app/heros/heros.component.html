@@ -6,4 +6,10 @@
     </li>
 </ul>
 
+<input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
+<input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
+<input type="radio" name="colors" (click)="color = 'cyan'" />Cyan
+<p [appHighlight]="color">Highlighted in orange</p>
+<p [appHighlight]="color" defaultColor="red">Highlighted in orange</p>
+
 <app-heros-info [hero]='select'></app-heros-info>
