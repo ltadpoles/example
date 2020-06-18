@@ -3,7 +3,8 @@
 <nav>
     <a routerLink="/heros">Heros</a>
 </nav>
-
+<p appHighlight highlightColor="yellow">Highlighted in yellow</p>
+<p appHighlight [highlightColor]="'orange'">Highlighted in orange</p>
 <router-outlet></router-outlet>
 
 <app-messages></app-messages>
