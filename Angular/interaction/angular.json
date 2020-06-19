@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "base-demo": {
+    "interaction": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/base-demo",
+            "outputPath": "dist/interaction",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,19 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "base-demo:build",
-            "port": 3333
+            "browserTarget": "interaction:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "base-demo:build:production"
+              "browserTarget": "interaction:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "base-demo:build"
+            "browserTarget": "interaction:build"
           }
         },
         "test": {
@@ -115,19 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "base-demo:serve"
+            "devServerTarget": "interaction:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "base-demo:serve:production"
+              "devServerTarget": "interaction:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "base-demo",
-  "cli": {
-    "analytics": "d8d70532-ea99-4d77-8b7f-b8c42bf4114d"
-  }
+    }},
+  "defaultProject": "interaction"
 }
