@@ -1,18 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
 
-import { AppComponent } from './app.component';
-import { VoteComponent } from './vote/vote.component';
+import { AppComponent } from './app.component'
+import { VoteComponent } from './vote/vote.component'
+import { AdDirective } from './ad.directive'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    VoteComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, VoteComponent, AdDirective],
+    imports: [BrowserModule],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
