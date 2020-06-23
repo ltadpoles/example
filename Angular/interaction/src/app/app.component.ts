@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'interaction';
+    title = 'Interaction'
+    agreed = 0
+    disagreed = 0
+    voters = ['Narco', 'Celeritas', 'Bombasto']
+
+    onVoted(agreed: boolean) {
+        agreed ? this.agreed++ : this.disagreed++
+    }
 }
