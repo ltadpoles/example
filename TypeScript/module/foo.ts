@@ -42,5 +42,3 @@ const sun: WeekDay = WeekDay.Sunday
 
 WeekDay.isBussinessDay(mon) // true
 WeekDay.isBussinessDay(sun) // false
-
-window.name
