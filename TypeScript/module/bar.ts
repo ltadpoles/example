@@ -2,8 +2,19 @@
 // console.log(foo)
 
 import * as foo from './foo'
-import foo1 from 'foo'
+import * as foo1 from 'foo'
 
-console.log(foo.foo1)
+// interface Crazy {
+//     new (): {
+//         hello: string
+//     }
+// }
 
-console.log(foo1)
+// class CrazyClass implements Crazy {
+//     // constructor() {
+//     //     return { hello: 'hello' }
+//     // }
+//     hello: string = 'hello'
+// }
+
+// let crazy = new CrazyClass()

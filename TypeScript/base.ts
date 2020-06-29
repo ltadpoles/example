@@ -96,6 +96,7 @@ let b: number = (person as string).length // 推荐
 
 // 声明语句
 declare var person1: string
+// 建议将这些声明语句放在独立的 .d.ts 文件中
 
 // 类型别名：使用 type 定义
 type Name = string
@@ -197,3 +198,10 @@ let point: Point = { x: 1, y: 2, z: 3 }
 
 // 装饰器：装饰器是一个对类进行处理的函数。装饰器函数的第一个参数，就是所要装饰的目标类。
 // 装饰器对类的行为的改变，是代码编译时发生的，而不是在运行时 ==> 装饰器本质就是编译时执行的函数
+
+// 交叉类型：是将多个类型合并为一个类型，它包含了所需的所有类型的特性
+function extend<T, U>(first: T, secend: U): T & U {
+    let result = <T & U>{}
+    // 这个里面可以对result做一些操作
+    return result
+}

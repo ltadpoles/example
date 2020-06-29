@@ -14,3 +14,33 @@ export const foo2: string = 'ltadpole'
  ../../node_modules
  直到项目根路径 
  */
+
+enum WeekDay {
+    Monday,
+    Tuesday,
+    wednesday,
+    thursday,
+    Friday,
+    Saturday,
+    Sunday
+}
+
+namespace WeekDay {
+    export function isBussinessDay(day: WeekDay) {
+        switch (day) {
+            case WeekDay.Saturday:
+            case WeekDay.Sunday:
+                return false
+            default:
+                return true
+        }
+    }
+}
+
+const mon: WeekDay = WeekDay.Monday
+const sun: WeekDay = WeekDay.Sunday
+
+WeekDay.isBussinessDay(mon) // true
+WeekDay.isBussinessDay(sun) // false
+
+window.name
