@@ -205,3 +205,5 @@ function extend<T, U>(first: T, secend: U): T & U {
     // 这个里面可以对result做一些操作
     return result
 }
+
+

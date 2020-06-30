@@ -66,4 +66,34 @@
 // 非原始类型：Object
 
 // 接收一个非原始类型参数或者 null 没有返回值
-declare function creat(o: object | null): void;
+// declare function creat(o: object | null): void
+
+// 这样会报错 可以使用断言的方式
+
+interface Foo {
+    bar: string
+    bas: number
+}
+
+const foo = {} as Foo
+foo.bar = '123'
+foo.bas = 1213
+
+type CardinalDirection = 'East' | 'North' | 'South' | 'West'
+
+function move(distance: number, direction?: CardinalDirection): void {}
+
+move(1, 'East')
+move(3)
+
+function addObj(str: string): object {
+    let obj: object = {}
+    obj[str] = str
+    return obj
+}
+
+let bar: {
+    readonly bar: 'tadpole'
+}
+
+let a1 = bar
