@@ -7,6 +7,9 @@ function Hello(): void {
 let str11: number = undefined
 let str12: string = null
 // 3. void 类型的变量只能将它赋值为 undefined 和 null
+// 4. unknow 类似any，顶级类型,只能赋值给 any 类型以及本身
+let un: unknown
+let value: any = un
 
 // 类型推论：
 // 1.TypeScript 会在没有明确的指定类型的时候推测出一个类型
