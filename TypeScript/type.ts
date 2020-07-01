@@ -92,8 +92,28 @@ function addObj(str: string): object {
     return obj
 }
 
-let bar: {
-    readonly bar: 'tadpole'
-}
+// let bar: {
+//     readonly bar: 'tadpole'
+// }
 
-let a1 = bar
+// let a1 = bar
+
+// let iTakeSomething = (x: (err: Error, data: any) => void) => {}
+// iTakeSomething((err, data) => null)
+
+// type test = (err, data) => void
+
+// let testt: test = (err, data) => 2
+
+// const Foo: {
+//     [index: string]: { message: string }
+// } = {}
+
+// Foo['name'] = {message: 'tadpole'}
+
+// 所有明确的成员必须符合索引签名的类型
+interface Foom {
+    [index: string]: string,
+    name: string,
+    age: string
+}

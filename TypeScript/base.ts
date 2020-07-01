@@ -206,4 +206,6 @@ function extend<T, U>(first: T, secend: U): T & U {
     return result
 }
 
+// void 与 never
+// void表示没有任何类型， never 表示永远不存在的值的类型（死循环或者抛出错误）
 

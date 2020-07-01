@@ -120,3 +120,13 @@
 // Cat1.call();
 // Cat1.move();
 // // Cat1.getAge(); // 使用引用的时候是不能调用子类上面的方法的
+
+// 私有的和受保护的成员必须来自相同的类
+class Animal {
+    protected bar: string
+}
+
+class Cat extends Animal {}
+
+let animal: Animal
+let cat: Cat
