@@ -212,3 +212,18 @@ function extend<T, U>(first: T, secend: U): T & U {
 // void 与 never
 // void表示没有任何类型， never 表示永远不存在的值的类型（死循环或者抛出错误）
 
+let personMan: object = {
+    age: 1
+}
+// console.log(personMan.age) // 这样会报错
+
+// object 用来描述一种非基础类型，一般用在类型校验上面
+function create(o: object | null): void {}
+
+create(null)
+create({ age: 18 })
+
+// 下面这些会报错
+// create(18)
+// create(false)
+// create('tadpole')
