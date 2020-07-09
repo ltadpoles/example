@@ -72,13 +72,13 @@
 
 interface getFun {
     // 限制的就是参数的类型和返回值的类型
-    (source: string, subString: string): boolean;
+    (source: string, subString: string): boolean
 }
 
-let myFun: getFun;
+let myFun: getFun
 
 myFun = function (source: string, subString: string) {
-    let result = source + subString;
-    console.log(result);
-    return 2 > 1;
-};
+    let result = source + subString
+    console.log(result)
+    return 2 > 1
+}
