@@ -1,4 +1,4 @@
-// 慎用 bind 这会是你丢失类型检查
+// 慎用 bind 这会使你丢失类型检查
 
 function getName(name: string): string {
     return name
