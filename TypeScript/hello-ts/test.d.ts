@@ -1,3 +1,3 @@
 export interface Person {
-    (name: string, age: number): void;
+    (name: string, age: number): void
 }
