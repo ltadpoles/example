@@ -11,11 +11,9 @@ function identity1<T>(arg: Array<T>): Array<T> {
 }
 
 // 泛型函数
-
 let identity2: <T>(arg: T) => T = identity
 
 // 泛型接口
-
 interface Generic {
     <T>(arg: T): T
 }
@@ -27,7 +25,6 @@ function identity3<T>(arg: T): T {
 let myIdentity: Generic = identity3
 
 // 泛型类
-
 class ident<T> {
     value: T
     getValue: (x: T, y: T) => T
@@ -38,7 +35,6 @@ test.value = 1
 test.getValue(1, 2)
 
 // 泛型约束 使用 extends 与 接口interface实现
-
 interface type {
     length: number
 }

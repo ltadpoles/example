@@ -1,5 +1,4 @@
 // 慎用 bind 这会使你丢失类型检查
-
 function getName(name: string): string {
     return name
 }
